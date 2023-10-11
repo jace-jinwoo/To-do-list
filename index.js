@@ -1,15 +1,16 @@
 const express = require('express')
 const mysql = require('mysql2')
-const dbconfig = require('./database.js')
 const bodyParser = require('body-parser')
-const connection = mysql.createConnection(dbconfig)
+const config = require('./config/key')
+const connection = mysql.createConnection(config?.dbconfig)
 
+console.log("config :: ", config)
 const app = express()
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT || 5000)
 app.get('/', (req, res) => {
     let query = "SELECT * FROM TODOS"
     
