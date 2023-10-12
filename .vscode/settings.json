@@ -1,0 +1,17 @@
+{
+    "eslint.validate": [
+        "html",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+      ],
+      "eslint.alwaysShowStatus": true,
+      /////////////////////////////
+      // Prettier
+      // 수정 후 저장할 때 prettier로 자동 스타일링
+      "editor.formatOnSave": true,
+      // 수정 후 저장할 때 eslint로 autofix 실행 (ex. let => const)
+      "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
+      // "editor.defaultFormatter": "esbenp.prettier-vscode",
+}
