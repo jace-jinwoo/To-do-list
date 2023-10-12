@@ -32,3 +32,10 @@
 1. 개인 정보 관련 소스코드는 Git remote repository 에 올라가지 않도록 처리 필요
 2. 별도의 파일로 관리하여 .gitignore 에 추가
 3. 실행 환경(로컬, 배포)에 따라 분기 처리
+
+## Install react using CRA (tried using Vite... But it is not working with react-router-dom v6)
+1. React 설치 
+  - `npx create-react-app .`
+  - `npm install`
+2. ESLint-Prettier 설치
+3. React-router-dom 설치
