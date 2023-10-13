@@ -12,11 +12,17 @@ function App() {
       path: "/",
       element: <Home />,
       errorElement: <Error />,
+      children: [
+        {
+          path: "/login",
+          element: <Login />
+        }
+      ]
     },
-    {
-      path: "login",
-      element: <Login />,
-    },
+    // {
+    //   path: "login",
+    //   element: <Login />,
+    // },
     {
       path: "register",
       element: <Register />,

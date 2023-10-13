@@ -21,7 +21,7 @@
       "no-shadow": "off",
       "vars-on-top": "off",
       "no-underscore-dangle": "off", 
-      "comma-dangle": "off",
+      "comma-dangle": "always-multiline",
       "func-names": "off", 
       "prefer-template": "off",
       "no-nested-ternary": "off",
