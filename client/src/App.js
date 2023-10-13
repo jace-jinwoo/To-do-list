@@ -12,16 +12,14 @@ function App() {
       path: "/",
       element: <Home />,
       errorElement: <Error />,
-      children: [
-        {
-          path: "login",
-          element: <Login />,
-        },
-        {
-          path: "register",
-          element: <Register />,
-        },
-      ],
+    },
+    {
+      path: "login",
+      element: <Login />,
+    },
+    {
+      path: "register",
+      element: <Register />,
     },
   ]);
 

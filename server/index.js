@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const config = require('./config/key')
 const connection = mysql.createConnection(config?.dbconfig)
 
-console.log("config :: ", config)
 const app = express()
 
 app.use(bodyParser.urlencoded({extended: true}))
@@ -20,6 +19,12 @@ app.get('/', (req, res) => {
         console.log('results :: ', results)
     })
 })
+
+app.get('/api/hello', (req, res) => {
+
+    res.send("Welcome to node's world")
+})
+
 
 app.post('/register', (req, res) => {
     
