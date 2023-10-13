@@ -1,9 +1,8 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
-import axios from 'axios'
+import axios, { HttpStatusCode } from 'axios'
 
 const onFinish = async (values) => {
-  console.log('Success:', values);
   const { username, password, remember } = values
 
   const body = {
@@ -11,8 +10,25 @@ const onFinish = async (values) => {
     password
   }
 
-  const result = await axios.post('/api/login', body)
-  console.log("Login :: ", result)
+  try {
+    const result = await axios.post('/api/login', body)
+    console.log("Login api result :: ", result)
+
+    // HTTP 통신 확인
+    if (result.status !== HttpStatusCode.Ok) {
+      alert("Failed request :: ", result)
+      return 
+    }
+    // 로그인 여부 확인
+    if (!result.data.loginSuccess) {
+      alert(result.data.message)
+      return 
+    }
+    alert(result.data.message)
+  }
+  catch (err) {
+    console.log("Exceptional Error :: ", err)
+  }
 };
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);

@@ -15,14 +15,37 @@ app.get('/', (req, res) => {
     
     connection.query(query, (err, results, fields) => {
         if (err) console.log('err :: ', err)
-        res.send(results)
+        res.json(results)
         console.log('results :: ', results)
     })
 })
 
-app.get('/api/hello', (req, res) => {
+app.post('/api/login', (req, res) => {
+    console.log("req :: ", req.body)
+    // let query = `SELECT * FROM TODOS WHERE todo='${req.body.username}' AND due='${req.body.password}'`
+    let query = "SELECT * FROM TODOS WHERE todo='jin' AND due='123'"
 
-    res.send("Welcome to node's world")
+    connection.query(query, (err, user, fields) => {
+        if (err) console.log('err :: ', err)
+        console.log('user :: ', user)
+
+        if (!user.length) {
+            return res.json({
+                loginSuccess: false,
+                message: '일치하는 계정이 없습니다.'
+            })
+        }
+
+        if (user.length > 1) {
+            throw new Error('DB에 동일한 ID가 존재')
+        }
+        
+        res.json({
+            loginSuccess: true,
+            message: '로그인 되었습니다.',
+            data: user
+        })
+    })
 })
 
 
